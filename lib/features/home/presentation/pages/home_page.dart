@@ -35,7 +35,7 @@ class MyHomePageState extends State<HomePage> {
       ),
       body: CustomBackground(
         child: Column(
-          children: [],
+          children: const [],
         ),
       ),
     );
