@@ -67,8 +67,8 @@ class MyHomePageState extends State<HomePage> {
                     length: 3,
                     child: TabBar(isScrollable: true, tabs: [
                       Tab(text: "Noun"),
-                      Tab(icon: Icon(Icons.directions_transit)),
-                      Tab(icon: Icon(Icons.directions_car)),
+                      Tab(text: "Gramer"),
+                      Tab(text: "Örnekler"),
                     ]),
                   ),
                   BlocBuilder<WordBloc, WordState>(
