@@ -1,0 +1,23 @@
+part of 'tabbar_bloc.dart';
+
+enum TabbarStatus {
+  initial,
+  loading,
+  success,
+  failure;
+
+  bool get isInitial => this == TabbarStatus.initial;
+  bool get isLoading => this == TabbarStatus.loading;
+  bool get isSuccess => this == TabbarStatus.success;
+  bool get isFailure => this == TabbarStatus.failure;
+}
+
+@freezed
+class TabbarState with _$TabbarState {
+  const factory TabbarState(
+      {@Default(TabbarStatus.initial) TabbarStatus status,
+      int? tabIndex}) = _TabbarState;
+
+  factory TabbarState.fromJson(Map<String, dynamic> json) =>
+      _$TabbarStateFromJson(json);
+}
