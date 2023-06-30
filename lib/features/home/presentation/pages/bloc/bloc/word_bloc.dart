@@ -10,7 +10,7 @@ part 'word_state.dart';
 part 'word_bloc.freezed.dart';
 part 'word_bloc.g.dart';
 
-class WordBloc extends Bloc<WordEvent, WordState> {
+class WordBloc extends HydratedBloc<WordEvent, WordState> {
   WordBloc(this.remoteWordService) : super(const WordState()) {
     on<_Searched>(_searhed);
     on<_AutoWord>(_autoWord);
@@ -27,7 +27,7 @@ class WordBloc extends Bloc<WordEvent, WordState> {
     emit(state.copyWith(status: WordStatus.initial));
 
     try {
-      final word = await RemoteWordService().getWords(word: words);
+      final word = await RemoteWordService.shared.getWords(word: words);
       emit(
         state.copyWith(status: WordStatus.success, remoteWordModel: word),
       );

@@ -5,6 +5,8 @@ import 'package:homescreen_widget/data/models/words/remote_word_model.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteWordService {
+RemoteWordService._();
+  static final shared = RemoteWordService._();
   final String _baseUrl = KNetwork.baseUrl;
 
   Future<RemoteWordModel?> getWords({required String word}) async {
