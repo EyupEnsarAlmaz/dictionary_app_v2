@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_widget/home_widget.dart';
+import 'package:homescreen_widget/core/companents/button/bloc2/bloc/tabbar_bloc.dart';
 import 'package:homescreen_widget/core/service/remote_word_service.dart';
 import 'package:homescreen_widget/data/repositories/local_word_repositories.dart';
 import 'package:homescreen_widget/features/home/presentation/pages/bloc/bloc/word_bloc.dart';
@@ -28,8 +29,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WordBloc(RemoteWordService.shared),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => WordBloc(RemoteWordService.shared),
+        ),
+        BlocProvider(
+          create: (context) => TabbarBloc(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Dictionary App',

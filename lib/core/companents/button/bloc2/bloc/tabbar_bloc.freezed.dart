@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TabbarEvent {
-  int? get tabIndex => throw _privateConstructorUsedError;
+  int? get newTabIndex => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? tabIndex) tabChangedEvent,
+    required TResult Function(int? newTabIndex) tabChangedEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? tabIndex)? tabChangedEvent,
+    TResult? Function(int? newTabIndex)? tabChangedEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? tabIndex)? tabChangedEvent,
+    TResult Function(int? newTabIndex)? tabChangedEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ abstract class $TabbarEventCopyWith<$Res> {
           TabbarEvent value, $Res Function(TabbarEvent) then) =
       _$TabbarEventCopyWithImpl<$Res, TabbarEvent>;
   @useResult
-  $Res call({int? tabIndex});
+  $Res call({int? newTabIndex});
 }
 
 /// @nodoc
@@ -77,12 +77,12 @@ class _$TabbarEventCopyWithImpl<$Res, $Val extends TabbarEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tabIndex = freezed,
+    Object? newTabIndex = freezed,
   }) {
     return _then(_value.copyWith(
-      tabIndex: freezed == tabIndex
-          ? _value.tabIndex
-          : tabIndex // ignore: cast_nullable_to_non_nullable
+      newTabIndex: freezed == newTabIndex
+          ? _value.newTabIndex
+          : newTabIndex // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
@@ -96,7 +96,7 @@ abstract class _$$_TabChangedCopyWith<$Res>
       __$$_TabChangedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? tabIndex});
+  $Res call({int? newTabIndex});
 }
 
 /// @nodoc
@@ -110,12 +110,12 @@ class __$$_TabChangedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tabIndex = freezed,
+    Object? newTabIndex = freezed,
   }) {
     return _then(_$_TabChanged(
-      freezed == tabIndex
-          ? _value.tabIndex
-          : tabIndex // ignore: cast_nullable_to_non_nullable
+      freezed == newTabIndex
+          ? _value.newTabIndex
+          : newTabIndex // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -124,14 +124,14 @@ class __$$_TabChangedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TabChanged implements _TabChanged {
-  const _$_TabChanged(this.tabIndex);
+  const _$_TabChanged(this.newTabIndex);
 
   @override
-  final int? tabIndex;
+  final int? newTabIndex;
 
   @override
   String toString() {
-    return 'TabbarEvent.tabChangedEvent(tabIndex: $tabIndex)';
+    return 'TabbarEvent.tabChangedEvent(newTabIndex: $newTabIndex)';
   }
 
   @override
@@ -139,12 +139,12 @@ class _$_TabChanged implements _TabChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TabChanged &&
-            (identical(other.tabIndex, tabIndex) ||
-                other.tabIndex == tabIndex));
+            (identical(other.newTabIndex, newTabIndex) ||
+                other.newTabIndex == newTabIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tabIndex);
+  int get hashCode => Object.hash(runtimeType, newTabIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -155,27 +155,27 @@ class _$_TabChanged implements _TabChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? tabIndex) tabChangedEvent,
+    required TResult Function(int? newTabIndex) tabChangedEvent,
   }) {
-    return tabChangedEvent(tabIndex);
+    return tabChangedEvent(newTabIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? tabIndex)? tabChangedEvent,
+    TResult? Function(int? newTabIndex)? tabChangedEvent,
   }) {
-    return tabChangedEvent?.call(tabIndex);
+    return tabChangedEvent?.call(newTabIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? tabIndex)? tabChangedEvent,
+    TResult Function(int? newTabIndex)? tabChangedEvent,
     required TResult orElse(),
   }) {
     if (tabChangedEvent != null) {
-      return tabChangedEvent(tabIndex);
+      return tabChangedEvent(newTabIndex);
     }
     return orElse();
   }
@@ -210,10 +210,10 @@ class _$_TabChanged implements _TabChanged {
 }
 
 abstract class _TabChanged implements TabbarEvent {
-  const factory _TabChanged(final int? tabIndex) = _$_TabChanged;
+  const factory _TabChanged(final int? newTabIndex) = _$_TabChanged;
 
   @override
-  int? get tabIndex;
+  int? get newTabIndex;
   @override
   @JsonKey(ignore: true)
   _$$_TabChangedCopyWith<_$_TabChanged> get copyWith =>
@@ -227,7 +227,7 @@ TabbarState _$TabbarStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TabbarState {
   TabbarStatus get status => throw _privateConstructorUsedError;
-  int? get tabIndex => throw _privateConstructorUsedError;
+  int? get newTabIndex => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -241,7 +241,7 @@ abstract class $TabbarStateCopyWith<$Res> {
           TabbarState value, $Res Function(TabbarState) then) =
       _$TabbarStateCopyWithImpl<$Res, TabbarState>;
   @useResult
-  $Res call({TabbarStatus status, int? tabIndex});
+  $Res call({TabbarStatus status, int? newTabIndex});
 }
 
 /// @nodoc
@@ -258,16 +258,16 @@ class _$TabbarStateCopyWithImpl<$Res, $Val extends TabbarState>
   @override
   $Res call({
     Object? status = null,
-    Object? tabIndex = freezed,
+    Object? newTabIndex = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as TabbarStatus,
-      tabIndex: freezed == tabIndex
-          ? _value.tabIndex
-          : tabIndex // ignore: cast_nullable_to_non_nullable
+      newTabIndex: freezed == newTabIndex
+          ? _value.newTabIndex
+          : newTabIndex // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
@@ -281,7 +281,7 @@ abstract class _$$_TabbarStateCopyWith<$Res>
       __$$_TabbarStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TabbarStatus status, int? tabIndex});
+  $Res call({TabbarStatus status, int? newTabIndex});
 }
 
 /// @nodoc
@@ -296,16 +296,16 @@ class __$$_TabbarStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? tabIndex = freezed,
+    Object? newTabIndex = freezed,
   }) {
     return _then(_$_TabbarState(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as TabbarStatus,
-      tabIndex: freezed == tabIndex
-          ? _value.tabIndex
-          : tabIndex // ignore: cast_nullable_to_non_nullable
+      newTabIndex: freezed == newTabIndex
+          ? _value.newTabIndex
+          : newTabIndex // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -314,7 +314,7 @@ class __$$_TabbarStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TabbarState implements _TabbarState {
-  const _$_TabbarState({this.status = TabbarStatus.initial, this.tabIndex});
+  const _$_TabbarState({this.status = TabbarStatus.initial, this.newTabIndex});
 
   factory _$_TabbarState.fromJson(Map<String, dynamic> json) =>
       _$$_TabbarStateFromJson(json);
@@ -323,11 +323,11 @@ class _$_TabbarState implements _TabbarState {
   @JsonKey()
   final TabbarStatus status;
   @override
-  final int? tabIndex;
+  final int? newTabIndex;
 
   @override
   String toString() {
-    return 'TabbarState(status: $status, tabIndex: $tabIndex)';
+    return 'TabbarState(status: $status, newTabIndex: $newTabIndex)';
   }
 
   @override
@@ -336,13 +336,13 @@ class _$_TabbarState implements _TabbarState {
         (other.runtimeType == runtimeType &&
             other is _$_TabbarState &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.tabIndex, tabIndex) ||
-                other.tabIndex == tabIndex));
+            (identical(other.newTabIndex, newTabIndex) ||
+                other.newTabIndex == newTabIndex));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, tabIndex);
+  int get hashCode => Object.hash(runtimeType, status, newTabIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -359,8 +359,8 @@ class _$_TabbarState implements _TabbarState {
 }
 
 abstract class _TabbarState implements TabbarState {
-  const factory _TabbarState({final TabbarStatus status, final int? tabIndex}) =
-      _$_TabbarState;
+  const factory _TabbarState(
+      {final TabbarStatus status, final int? newTabIndex}) = _$_TabbarState;
 
   factory _TabbarState.fromJson(Map<String, dynamic> json) =
       _$_TabbarState.fromJson;
@@ -368,7 +368,7 @@ abstract class _TabbarState implements TabbarState {
   @override
   TabbarStatus get status;
   @override
-  int? get tabIndex;
+  int? get newTabIndex;
   @override
   @JsonKey(ignore: true)
   _$$_TabbarStateCopyWith<_$_TabbarState> get copyWith =>
