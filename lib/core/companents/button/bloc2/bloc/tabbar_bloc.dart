@@ -1,10 +1,10 @@
-import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'tabbar_event.dart';
 part 'tabbar_state.dart';
 part 'tabbar_bloc.freezed.dart';
+part 'tabbar_bloc.g.dart';
 
 class TabbarBloc extends HydratedBloc<TabbarEvent, TabbarState> {
   TabbarBloc() : super(const TabbarState()) {
@@ -12,13 +12,12 @@ class TabbarBloc extends HydratedBloc<TabbarEvent, TabbarState> {
   }
 
   Future<void> _tabChanged(_TabChanged event, Emitter emit) async {
-    emit(event.tabIndex);
+    return emit(state.copyWith(newTabIndex: event.newTabIndex));
   }
 
   @override
   TabbarState? fromJson(Map<String, dynamic> json) {
     TabbarState.fromJson(json);
-    return null;
   }
 
   @override

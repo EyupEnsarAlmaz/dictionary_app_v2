@@ -16,7 +16,7 @@ enum TabbarStatus {
 class TabbarState with _$TabbarState {
   const factory TabbarState(
       {@Default(TabbarStatus.initial) TabbarStatus status,
-      int? tabIndex}) = _TabbarState;
+       int? newTabIndex}) = _TabbarState;
 
   factory TabbarState.fromJson(Map<String, dynamic> json) =>
       _$TabbarStateFromJson(json);
