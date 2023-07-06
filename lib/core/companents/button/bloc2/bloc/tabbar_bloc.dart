@@ -6,8 +6,8 @@ part 'tabbar_state.dart';
 part 'tabbar_bloc.freezed.dart';
 part 'tabbar_bloc.g.dart';
 
-class TabbarBloc extends HydratedBloc<TabbarEvent, TabbarState> {
-  TabbarBloc() : super(const TabbarState()) {
+class TabbarBloc extends Bloc<TabbarEvent, TabbarState> {
+  TabbarBloc() : super(const TabbarState(newTabIndex: 0)) {
     on<_TabChanged>(_tabChanged);
   }
 
