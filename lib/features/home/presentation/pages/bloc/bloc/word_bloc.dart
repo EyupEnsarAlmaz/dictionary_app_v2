@@ -10,7 +10,7 @@ part 'word_state.dart';
 part 'word_bloc.freezed.dart';
 part 'word_bloc.g.dart';
 
-class WordBloc extends HydratedBloc<WordEvent, WordState> {
+class WordBloc extends Bloc<WordEvent, WordState> {
   WordBloc(this.remoteWordService) : super(const WordState()) {
     on<_Searched>(_searhed);
     on<_AutoWord>(_autoWord);

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_widget/home_widget.dart';
@@ -39,6 +38,7 @@ class MyHomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final wordBloc = context.watch<WordBloc>().state.remoteWordModel;
+    final tabbarBloc = context.watch<TabbarBloc>().state.newTabIndex;
     return Scaffold(
       body: SingleChildScrollView(
         child: CustomBackground(
@@ -65,6 +65,7 @@ class MyHomePageState extends State<HomePage> {
               BlocBuilder<TabbarBloc, TabbarState>(
                 builder: (context, state) {
                   return DefaultTabController(
+                    initialIndex: 0,
                     length: 3,
                     child: TabBar(
                         onTap: (tabIndex) async {
@@ -95,24 +96,64 @@ class MyHomePageState extends State<HomePage> {
                   );
                 },
               ),
-              BlocBuilder<TabbarBloc, TabbarState>(builder: (context, state) {
-                if (state.newTabIndex == 0) {
-                  return Expanded(
-                    child: ListView.builder(
-                        itemCount: 1,
-                        itemBuilder: (BuildContext context, int index) {
+              BlocBuilder<WordBloc, WordState>(builder: (context, state) {
+                if (state.status.isSuccess && tabbarBloc == 0) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: MediaQuery.of(context).size.height * 0.72,
+                    child: Expanded(
+                      child: ListView.separated(
+                        itemBuilder: (context, index) {
+                          final meaning = wordBloc?.meanings?[index];
+                          final definitions = meaning?.definitions;
                           return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(wordBloc!.word![index].toString(),
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 25))
+                              Text(
+                                meaning?.partOfSpeech ?? "null",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              ListView.separated(
+                                itemBuilder: (context, index) => Column(
+                                  children: [
+                                    Text(
+                                      "Definition : ${definitions?[index].definition} ",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Text(
+                                      "Sentence  : ${definitions?[index].example}",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                ),
+                                separatorBuilder: (context, index) => SizedBox(
+                                  height: 8,
+                                ),
+                                itemCount: definitions?.length ?? 0,
+                                shrinkWrap: true,
+                              )
                             ],
                           );
-                        }),
+                        },
+                        itemCount: wordBloc?.meanings?.length ?? 0,
+                        separatorBuilder: (context, index) => SizedBox(
+                          height: 32,
+                        ),
+                      ),
+                    ),
                   );
                 }
                 return Text("");
-              }),
+              })
             ],
           ),
         ),
