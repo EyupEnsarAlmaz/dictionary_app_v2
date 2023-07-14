@@ -47,7 +47,10 @@ class Meanings {
   String? partOfSpeech;
   List<Definitions>? definitions;
 
-  Meanings({this.partOfSpeech, this.definitions});
+  Meanings({
+    this.partOfSpeech,
+    this.definitions,
+  });
 
   factory Meanings.fromJson(Map<String, dynamic> json) {
     return _$MeaningsFromJson(json);

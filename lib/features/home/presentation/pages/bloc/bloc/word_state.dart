@@ -17,6 +17,9 @@ class WordState with _$WordState {
   const factory WordState({
     @Default(WordStatus.initial) WordStatus status,
     RemoteWordModel? remoteWordModel,
+    List<Definitions>? nounList,
+    List<Definitions>? verbList,
+    List<Definitions>? adjectiveList,
     String? autoWords,
   }) = _WordState;
 

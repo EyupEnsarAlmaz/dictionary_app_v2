@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TabbarEvent {
+mixin _$TabBarEvent {
   int? get newTabIndex => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -51,23 +51,23 @@ mixin _$TabbarEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TabbarEventCopyWith<TabbarEvent> get copyWith =>
+  $TabBarEventCopyWith<TabBarEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TabbarEventCopyWith<$Res> {
-  factory $TabbarEventCopyWith(
-          TabbarEvent value, $Res Function(TabbarEvent) then) =
-      _$TabbarEventCopyWithImpl<$Res, TabbarEvent>;
+abstract class $TabBarEventCopyWith<$Res> {
+  factory $TabBarEventCopyWith(
+          TabBarEvent value, $Res Function(TabBarEvent) then) =
+      _$TabBarEventCopyWithImpl<$Res, TabBarEvent>;
   @useResult
   $Res call({int? newTabIndex});
 }
 
 /// @nodoc
-class _$TabbarEventCopyWithImpl<$Res, $Val extends TabbarEvent>
-    implements $TabbarEventCopyWith<$Res> {
-  _$TabbarEventCopyWithImpl(this._value, this._then);
+class _$TabBarEventCopyWithImpl<$Res, $Val extends TabBarEvent>
+    implements $TabBarEventCopyWith<$Res> {
+  _$TabBarEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,7 +90,7 @@ class _$TabbarEventCopyWithImpl<$Res, $Val extends TabbarEvent>
 
 /// @nodoc
 abstract class _$$_TabChangedCopyWith<$Res>
-    implements $TabbarEventCopyWith<$Res> {
+    implements $TabBarEventCopyWith<$Res> {
   factory _$$_TabChangedCopyWith(
           _$_TabChanged value, $Res Function(_$_TabChanged) then) =
       __$$_TabChangedCopyWithImpl<$Res>;
@@ -101,7 +101,7 @@ abstract class _$$_TabChangedCopyWith<$Res>
 
 /// @nodoc
 class __$$_TabChangedCopyWithImpl<$Res>
-    extends _$TabbarEventCopyWithImpl<$Res, _$_TabChanged>
+    extends _$TabBarEventCopyWithImpl<$Res, _$_TabChanged>
     implements _$$_TabChangedCopyWith<$Res> {
   __$$_TabChangedCopyWithImpl(
       _$_TabChanged _value, $Res Function(_$_TabChanged) _then)
@@ -131,7 +131,7 @@ class _$_TabChanged implements _TabChanged {
 
   @override
   String toString() {
-    return 'TabbarEvent.tabChangedEvent(newTabIndex: $newTabIndex)';
+    return 'TabBarEvent.tabChangedEvent(newTabIndex: $newTabIndex)';
   }
 
   @override
@@ -209,7 +209,7 @@ class _$_TabChanged implements _TabChanged {
   }
 }
 
-abstract class _TabChanged implements TabbarEvent {
+abstract class _TabChanged implements TabBarEvent {
   const factory _TabChanged(final int? newTabIndex) = _$_TabChanged;
 
   @override
@@ -220,34 +220,34 @@ abstract class _TabChanged implements TabbarEvent {
       throw _privateConstructorUsedError;
 }
 
-TabbarState _$TabbarStateFromJson(Map<String, dynamic> json) {
+TabBarState _$TabBarStateFromJson(Map<String, dynamic> json) {
   return _TabbarState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TabbarState {
+mixin _$TabBarState {
   TabbarStatus get status => throw _privateConstructorUsedError;
   int? get newTabIndex => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TabbarStateCopyWith<TabbarState> get copyWith =>
+  $TabBarStateCopyWith<TabBarState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TabbarStateCopyWith<$Res> {
-  factory $TabbarStateCopyWith(
-          TabbarState value, $Res Function(TabbarState) then) =
-      _$TabbarStateCopyWithImpl<$Res, TabbarState>;
+abstract class $TabBarStateCopyWith<$Res> {
+  factory $TabBarStateCopyWith(
+          TabBarState value, $Res Function(TabBarState) then) =
+      _$TabBarStateCopyWithImpl<$Res, TabBarState>;
   @useResult
   $Res call({TabbarStatus status, int? newTabIndex});
 }
 
 /// @nodoc
-class _$TabbarStateCopyWithImpl<$Res, $Val extends TabbarState>
-    implements $TabbarStateCopyWith<$Res> {
-  _$TabbarStateCopyWithImpl(this._value, this._then);
+class _$TabBarStateCopyWithImpl<$Res, $Val extends TabBarState>
+    implements $TabBarStateCopyWith<$Res> {
+  _$TabBarStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -275,7 +275,7 @@ class _$TabbarStateCopyWithImpl<$Res, $Val extends TabbarState>
 
 /// @nodoc
 abstract class _$$_TabbarStateCopyWith<$Res>
-    implements $TabbarStateCopyWith<$Res> {
+    implements $TabBarStateCopyWith<$Res> {
   factory _$$_TabbarStateCopyWith(
           _$_TabbarState value, $Res Function(_$_TabbarState) then) =
       __$$_TabbarStateCopyWithImpl<$Res>;
@@ -286,7 +286,7 @@ abstract class _$$_TabbarStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_TabbarStateCopyWithImpl<$Res>
-    extends _$TabbarStateCopyWithImpl<$Res, _$_TabbarState>
+    extends _$TabBarStateCopyWithImpl<$Res, _$_TabbarState>
     implements _$$_TabbarStateCopyWith<$Res> {
   __$$_TabbarStateCopyWithImpl(
       _$_TabbarState _value, $Res Function(_$_TabbarState) _then)
@@ -327,7 +327,7 @@ class _$_TabbarState implements _TabbarState {
 
   @override
   String toString() {
-    return 'TabbarState(status: $status, newTabIndex: $newTabIndex)';
+    return 'TabBarState(status: $status, newTabIndex: $newTabIndex)';
   }
 
   @override
@@ -358,7 +358,7 @@ class _$_TabbarState implements _TabbarState {
   }
 }
 
-abstract class _TabbarState implements TabbarState {
+abstract class _TabbarState implements TabBarState {
   const factory _TabbarState(
       {final TabbarStatus status, final int? newTabIndex}) = _$_TabbarState;
 

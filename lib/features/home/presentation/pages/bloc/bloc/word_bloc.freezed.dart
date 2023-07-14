@@ -348,6 +348,9 @@ WordState _$WordStateFromJson(Map<String, dynamic> json) {
 mixin _$WordState {
   WordStatus get status => throw _privateConstructorUsedError;
   RemoteWordModel? get remoteWordModel => throw _privateConstructorUsedError;
+  List<Definitions>? get nounList => throw _privateConstructorUsedError;
+  List<Definitions>? get verbList => throw _privateConstructorUsedError;
+  List<Definitions>? get adjectiveList => throw _privateConstructorUsedError;
   String? get autoWords => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -362,7 +365,12 @@ abstract class $WordStateCopyWith<$Res> {
       _$WordStateCopyWithImpl<$Res, WordState>;
   @useResult
   $Res call(
-      {WordStatus status, RemoteWordModel? remoteWordModel, String? autoWords});
+      {WordStatus status,
+      RemoteWordModel? remoteWordModel,
+      List<Definitions>? nounList,
+      List<Definitions>? verbList,
+      List<Definitions>? adjectiveList,
+      String? autoWords});
 }
 
 /// @nodoc
@@ -380,6 +388,9 @@ class _$WordStateCopyWithImpl<$Res, $Val extends WordState>
   $Res call({
     Object? status = null,
     Object? remoteWordModel = freezed,
+    Object? nounList = freezed,
+    Object? verbList = freezed,
+    Object? adjectiveList = freezed,
     Object? autoWords = freezed,
   }) {
     return _then(_value.copyWith(
@@ -391,6 +402,18 @@ class _$WordStateCopyWithImpl<$Res, $Val extends WordState>
           ? _value.remoteWordModel
           : remoteWordModel // ignore: cast_nullable_to_non_nullable
               as RemoteWordModel?,
+      nounList: freezed == nounList
+          ? _value.nounList
+          : nounList // ignore: cast_nullable_to_non_nullable
+              as List<Definitions>?,
+      verbList: freezed == verbList
+          ? _value.verbList
+          : verbList // ignore: cast_nullable_to_non_nullable
+              as List<Definitions>?,
+      adjectiveList: freezed == adjectiveList
+          ? _value.adjectiveList
+          : adjectiveList // ignore: cast_nullable_to_non_nullable
+              as List<Definitions>?,
       autoWords: freezed == autoWords
           ? _value.autoWords
           : autoWords // ignore: cast_nullable_to_non_nullable
@@ -407,7 +430,12 @@ abstract class _$$_WordStateCopyWith<$Res> implements $WordStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {WordStatus status, RemoteWordModel? remoteWordModel, String? autoWords});
+      {WordStatus status,
+      RemoteWordModel? remoteWordModel,
+      List<Definitions>? nounList,
+      List<Definitions>? verbList,
+      List<Definitions>? adjectiveList,
+      String? autoWords});
 }
 
 /// @nodoc
@@ -423,6 +451,9 @@ class __$$_WordStateCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? remoteWordModel = freezed,
+    Object? nounList = freezed,
+    Object? verbList = freezed,
+    Object? adjectiveList = freezed,
     Object? autoWords = freezed,
   }) {
     return _then(_$_WordState(
@@ -434,6 +465,18 @@ class __$$_WordStateCopyWithImpl<$Res>
           ? _value.remoteWordModel
           : remoteWordModel // ignore: cast_nullable_to_non_nullable
               as RemoteWordModel?,
+      nounList: freezed == nounList
+          ? _value._nounList
+          : nounList // ignore: cast_nullable_to_non_nullable
+              as List<Definitions>?,
+      verbList: freezed == verbList
+          ? _value._verbList
+          : verbList // ignore: cast_nullable_to_non_nullable
+              as List<Definitions>?,
+      adjectiveList: freezed == adjectiveList
+          ? _value._adjectiveList
+          : adjectiveList // ignore: cast_nullable_to_non_nullable
+              as List<Definitions>?,
       autoWords: freezed == autoWords
           ? _value.autoWords
           : autoWords // ignore: cast_nullable_to_non_nullable
@@ -446,7 +489,15 @@ class __$$_WordStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WordState implements _WordState {
   const _$_WordState(
-      {this.status = WordStatus.initial, this.remoteWordModel, this.autoWords});
+      {this.status = WordStatus.initial,
+      this.remoteWordModel,
+      final List<Definitions>? nounList,
+      final List<Definitions>? verbList,
+      final List<Definitions>? adjectiveList,
+      this.autoWords})
+      : _nounList = nounList,
+        _verbList = verbList,
+        _adjectiveList = adjectiveList;
 
   factory _$_WordState.fromJson(Map<String, dynamic> json) =>
       _$$_WordStateFromJson(json);
@@ -456,12 +507,42 @@ class _$_WordState implements _WordState {
   final WordStatus status;
   @override
   final RemoteWordModel? remoteWordModel;
+  final List<Definitions>? _nounList;
+  @override
+  List<Definitions>? get nounList {
+    final value = _nounList;
+    if (value == null) return null;
+    if (_nounList is EqualUnmodifiableListView) return _nounList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Definitions>? _verbList;
+  @override
+  List<Definitions>? get verbList {
+    final value = _verbList;
+    if (value == null) return null;
+    if (_verbList is EqualUnmodifiableListView) return _verbList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Definitions>? _adjectiveList;
+  @override
+  List<Definitions>? get adjectiveList {
+    final value = _adjectiveList;
+    if (value == null) return null;
+    if (_adjectiveList is EqualUnmodifiableListView) return _adjectiveList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? autoWords;
 
   @override
   String toString() {
-    return 'WordState(status: $status, remoteWordModel: $remoteWordModel, autoWords: $autoWords)';
+    return 'WordState(status: $status, remoteWordModel: $remoteWordModel, nounList: $nounList, verbList: $verbList, adjectiveList: $adjectiveList, autoWords: $autoWords)';
   }
 
   @override
@@ -472,14 +553,24 @@ class _$_WordState implements _WordState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.remoteWordModel, remoteWordModel) ||
                 other.remoteWordModel == remoteWordModel) &&
+            const DeepCollectionEquality().equals(other._nounList, _nounList) &&
+            const DeepCollectionEquality().equals(other._verbList, _verbList) &&
+            const DeepCollectionEquality()
+                .equals(other._adjectiveList, _adjectiveList) &&
             (identical(other.autoWords, autoWords) ||
                 other.autoWords == autoWords));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, remoteWordModel, autoWords);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      remoteWordModel,
+      const DeepCollectionEquality().hash(_nounList),
+      const DeepCollectionEquality().hash(_verbList),
+      const DeepCollectionEquality().hash(_adjectiveList),
+      autoWords);
 
   @JsonKey(ignore: true)
   @override
@@ -499,6 +590,9 @@ abstract class _WordState implements WordState {
   const factory _WordState(
       {final WordStatus status,
       final RemoteWordModel? remoteWordModel,
+      final List<Definitions>? nounList,
+      final List<Definitions>? verbList,
+      final List<Definitions>? adjectiveList,
       final String? autoWords}) = _$_WordState;
 
   factory _WordState.fromJson(Map<String, dynamic> json) =
@@ -508,6 +602,12 @@ abstract class _WordState implements WordState {
   WordStatus get status;
   @override
   RemoteWordModel? get remoteWordModel;
+  @override
+  List<Definitions>? get nounList;
+  @override
+  List<Definitions>? get verbList;
+  @override
+  List<Definitions>? get adjectiveList;
   @override
   String? get autoWords;
   @override
