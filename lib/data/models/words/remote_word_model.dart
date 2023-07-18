@@ -74,4 +74,6 @@ class Definitions {
   Map<String, dynamic> toJson() {
     return _$DefinitionsToJson(this);
   }
+
+  add(List<Definitions>? definitions) {}
 }
