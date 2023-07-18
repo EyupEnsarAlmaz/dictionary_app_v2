@@ -6,25 +6,12 @@ part 'tabbar_state.dart';
 part 'tabbar_bloc.freezed.dart';
 part 'tabbar_bloc.g.dart';
 
-class TabbarBloc extends Bloc<TabbarEvent, TabbarState> {
-  TabbarBloc() : super(const TabbarState(newTabIndex: 0)) {
+class TabBarBloc extends Bloc<TabBarEvent, TabBarState> {
+  TabBarBloc() : super(const TabBarState(newTabIndex: 0)) {
     on<_TabChanged>(_tabChanged);
   }
 
   Future<void> _tabChanged(_TabChanged event, Emitter emit) async {
     return emit(state.copyWith(newTabIndex: event.newTabIndex));
-  }
-
-  @override
-  TabbarState? fromJson(Map<String, dynamic> json) {
-    TabbarState.fromJson(json);
-  }
-
-  @override
-  Map<String, dynamic>? toJson(TabbarState state) {
-    if (state.status.isSuccess) {
-      return state.toJson();
-    }
-    return null;
   }
 }

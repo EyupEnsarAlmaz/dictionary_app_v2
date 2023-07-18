@@ -13,11 +13,11 @@ enum TabbarStatus {
 }
 
 @freezed
-class TabbarState with _$TabbarState {
-  const factory TabbarState(
+class TabBarState with _$TabBarState {
+  const factory TabBarState(
       {@Default(TabbarStatus.initial) TabbarStatus status,
-       int? newTabIndex}) = _TabbarState;
+      int? newTabIndex}) = _TabbarState;
 
-  factory TabbarState.fromJson(Map<String, dynamic> json) =>
-      _$TabbarStateFromJson(json);
+  factory TabBarState.fromJson(Map<String, dynamic> json) =>
+      _$TabBarStateFromJson(json);
 }
