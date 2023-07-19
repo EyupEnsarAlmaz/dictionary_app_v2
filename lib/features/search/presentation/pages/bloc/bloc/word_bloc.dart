@@ -155,4 +155,16 @@ class WordBloc extends Bloc<WordEvent, WordState> {
       emit(state.copyWith(status: WordStatus.failure));
     }
   }
+
+  void clearAllList() {
+    emit(state.copyWith(status: WordStatus.initial));
+    noun?.clear();
+    verb?.clear();
+    adjective?.clear();
+    pronoun?.clear();
+    articles?.clear();
+    interjection?.clear();
+    adverb?.clear();
+    preposition?.clear();
+  }
 }

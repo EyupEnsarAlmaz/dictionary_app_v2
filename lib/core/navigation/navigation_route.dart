@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homescreen_widget/core/navigation/constant/routest_constant.dart';
+import 'package:homescreen_widget/features/home/features/home_page.dart';
 import 'package:homescreen_widget/features/search/pages/search_page.dart';
 import 'package:homescreen_widget/features/wordofday/pages/word_of_day_page.dart';
 
@@ -15,6 +16,9 @@ class NavigationRoute {
 
       case KRoute.WORDOFDAY_PAGE:
         return _getRoute(WordOfDayPage());
+
+      case KRoute.HOME_PAGE:
+        return _getRoute(HomePage());
 
       default:
         return MaterialPageRoute(

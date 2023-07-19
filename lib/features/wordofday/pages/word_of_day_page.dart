@@ -43,85 +43,131 @@ class MyHomePageState extends State<WordOfDayPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomBackground(
-        onTap: () {
-          _navigator.navigateTo(path: KRoute.SEARCH_PAGE);
-        },
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              BlocBuilder<WordBloc, WordState>(
-                builder: (context, wordstate) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(wordstate.remoteWordModel?.word?.toString() ?? ""),
-                      Text(wordstate.remoteWordModel?.phonetics?[0].text
-                              .toString() ??
-                          "")
-                    ],
-                  );
-                },
-              ),
-              BlocBuilder<TabBarBloc, TabBarState>(
-                builder: (context, state) {
-                  return DefaultTabController(
-                    initialIndex: 0,
-                    length: 8,
-                    child: TabBar(
-                        isScrollable: true,
-                        onTap: (tabIndex) async {
-                          context
-                              .read<TabBarBloc>()
-                              .add(TabBarEvent.tabChangedEvent(tabIndex));
-                        },
-                        tabs: const [
-                          Tab(text: "Noun"),
-                          Tab(text: "Verb"),
-                          Tab(text: "Adjectives"),
-                          Tab(text: "Pronoun"),
-                          Tab(text: "Articles"),
-                          Tab(text: "Interjection"),
-                          Tab(text: "Adverb"),
-                          Tab(text: "Preposition"),
-                        ]),
-                  );
-                },
-              ),
-              BlocBuilder<TabBarBloc, TabBarState>(
-                builder: (context, tabBarState) {
-                  return BlocBuilder<WordBloc, WordState>(
-                    builder: (context, wordState) {
-                      if (wordState.status.isSuccess) {
-                        if (tabBarState.newTabIndex == 0) {
-                          return _listViewBuilder(wordState.nounList);
-                        } else if (tabBarState.newTabIndex == 1) {
-                          return _listViewBuilder(wordState.verbList);
-                        } else if (tabBarState.newTabIndex == 2) {
-                          return _listViewBuilder(wordState.adjectiveList);
-                        } else if (tabBarState.newTabIndex == 3) {
-                          return _listViewBuilder(wordState.pronounList);
-                        } else if (tabBarState.newTabIndex == 4) {
-                          return _listViewBuilder(wordState.articlesList);
-                        } else if (tabBarState.newTabIndex == 5) {
-                          return _listViewBuilder(wordState.interjectionList);
-                        } else if (tabBarState.newTabIndex == 6) {
-                          return _listViewBuilder(wordState.adverbList);
-                        } else if (tabBarState.newTabIndex == 7) {
-                          return _listViewBuilder(wordState.prepositionList);
-                        }
+      body: BlocBuilder<WordBloc, WordState>(
+        builder: (context, wordstate) {
+          return CustomBackground(
+            onTap: () {
+              context.read<WordBloc>().clearAllList();
+              _navigator.navigateTo(path: KRoute.HOME_PAGE);
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  BlocBuilder<WordBloc, WordState>(
+                    builder: (context, wordstate) {
+                      if (wordstate.status.isSuccess) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(wordstate.remoteWordModel?.word?.toString() ??
+                                ""),
+                            Text(wordstate.remoteWordModel?.phonetics?[0].text
+                                    .toString() ??
+                                "")
+                          ],
+                        );
                       }
-                      if (wordState.status.isLoading) {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      return const Text("");
+                      return Text("");
                     },
-                  );
-                },
-              )
-            ],
-          ),
-        ),
+                  ),
+                  BlocBuilder<TabBarBloc, TabBarState>(
+                    builder: (context, state) {
+                      return _tabBarWidget(context);
+                    },
+                  ),
+                  BlocBuilder<TabBarBloc, TabBarState>(
+                    builder: (context, tabBarState) {
+                      return BlocBuilder<WordBloc, WordState>(
+                        builder: (context, wordState) {
+                          if (wordState.status.isSuccess) {
+                            if (tabBarState.newTabIndex == 0) {
+                              return _listViewBuilder(wordState.nounList);
+                            } else if (tabBarState.newTabIndex == 1) {
+                              return _listViewBuilder(wordState.verbList);
+                            } else if (tabBarState.newTabIndex == 2) {
+                              return _listViewBuilder(wordState.adjectiveList);
+                            } else if (tabBarState.newTabIndex == 3) {
+                              return _listViewBuilder(wordState.pronounList);
+                            } else if (tabBarState.newTabIndex == 4) {
+                              return _listViewBuilder(wordState.articlesList);
+                            } else if (tabBarState.newTabIndex == 5) {
+                              return _listViewBuilder(
+                                  wordState.interjectionList);
+                            } else if (tabBarState.newTabIndex == 6) {
+                              return _listViewBuilder(wordState.adverbList);
+                            } else if (tabBarState.newTabIndex == 7) {
+                              return _listViewBuilder(
+                                  wordState.prepositionList);
+                            }
+                          }
+                          if (wordState.status.isLoading) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          return const Text("");
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  DefaultTabController _tabBarWidget(BuildContext context) {
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 8,
+      child: BlocBuilder<WordBloc, WordState>(
+        builder: (context, wordstate) {
+          return TabBar(
+              isScrollable: true,
+              onTap: (tabIndex) async {
+                context
+                    .read<TabBarBloc>()
+                    .add(TabBarEvent.tabChangedEvent(tabIndex));
+              },
+              tabs: [
+                Tab(
+                    text: wordstate.nounList != null
+                        ? "Noun: (${wordstate.nounList?.length})"
+                        : "Noun"),
+                Tab(
+                    text: wordstate.verbList != null
+                        ? "Verb:" " (${wordstate.verbList?.length})"
+                        : "Verb"),
+                Tab(
+                    text: wordstate.adjectiveList != null
+                        ? "Adjective:" " (${wordstate.adjectiveList?.length})"
+                        : "Adjective"),
+                Tab(
+                    text: wordstate.pronounList != null
+                        ? "Pronoun:" " (${wordstate.pronounList?.length})"
+                        : "Pronoun"),
+                Tab(
+                    text: wordstate.articlesList != null
+                        ? "Articles:" " (${wordstate.articlesList?.length})"
+                        : "Articles"),
+                Tab(
+                    text: wordstate.interjectionList != null
+                        ? "Interjection:"
+                            " (${wordstate.interjectionList?.length})"
+                        : "Interjection"),
+                Tab(
+                    text: wordstate.adverbList != null
+                        ? "Adverb:"
+                            " (${wordstate.adverbList?.length})"
+                        : "Adverb"),
+                Tab(
+                    text: wordstate.prepositionList != null
+                        ? "Preposition:"
+                            " (${wordstate.prepositionList?.length})"
+                        : "Preposition"),
+              ]);
+        },
       ),
     );
   }
@@ -130,7 +176,7 @@ class MyHomePageState extends State<WordOfDayPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        data?[0].definition != null
+        data != null
             ? Padding(
                 padding: context.lowPadding,
                 child: Text(
