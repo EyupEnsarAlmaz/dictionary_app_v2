@@ -4,6 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homescreen_widget/core/extantion/context_extantion.dart';
 import 'package:homescreen_widget/core/navigation/constant/routest_constant.dart';
+import 'package:homescreen_widget/core/navigation/navigation_route.dart';
+import 'package:homescreen_widget/core/navigation/navigation_service.dart';
+import 'package:homescreen_widget/features/home/features/home_page.dart';
 import 'package:homescreen_widget/features/search/pages/search_page.dart';
 import 'package:homescreen_widget/features/search/presentation/pages/bloc/bloc/word_bloc.dart';
 import 'package:homescreen_widget/features/wordofday/pages/word_of_day_page.dart';
@@ -36,12 +39,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Dictionary App',
-        initialRoute: KRoute.WORDOFDAY_PAGE,
+        initialRoute: KRoute.HOME_PAGE,
+        onGenerateRoute: NavigationRoute.shared.generateRoute,
+        navigatorKey: NavigationService.shared.navigatorKey,
         theme: ThemeData(
             primaryColor: Colors.white,
             textTheme:
                 const TextTheme(titleSmall: TextStyle(color: Colors.white))),
-        home: WordOfDayPage(),
+        home: HomePage(),
       ),
     );
   }

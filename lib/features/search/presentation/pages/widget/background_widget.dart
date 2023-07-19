@@ -10,11 +10,11 @@ class CustomBackground extends StatelessWidget {
   const CustomBackground({
     Key? key,
     required this.child,
-    this.onTap,
+    required this.onTap,
   }) : super(key: key);
 
   final Widget child;
-  final void Function()? onTap;
+  final void Function() onTap;
   final logo = "assets/k_logo.png";
 
   @override
@@ -32,7 +32,7 @@ class CustomBackground extends StatelessWidget {
             padding: context.only(top: 0.03),
             child: InkWell(
               onTap: () {
-                onTap;
+                onTap();
               },
               child: Image.asset(logo,
                   width: context.width(0.25), height: context.height(0.15)),
