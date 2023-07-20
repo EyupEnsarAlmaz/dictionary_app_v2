@@ -19,6 +19,7 @@ class WordRepository {
     final int index = now.day % keys.length;
     return keys[index];
   }
+
   String getDailyWordKeyAndValue() {
     final DateTime now = DateTime.now();
     final List<String> keys = getKeys();

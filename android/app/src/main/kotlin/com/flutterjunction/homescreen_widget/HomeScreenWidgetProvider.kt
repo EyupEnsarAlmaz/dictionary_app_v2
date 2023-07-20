@@ -22,8 +22,12 @@ class HomeScreenWidgetProvider : HomeWidgetProvider() {
                 val quote = widgetData.getString("_quote", null)
 
 
-
+                
                 setTextViewText(R.id.word1, quote)
+
+                 val backgroundIntent = HomeWidgetBackgroundIntent.getBroadcast(context,
+                        Uri.parse("myAppWidget://speechword"))
+                setOnClickPendingIntent(R.id.bt_update, backgroundIntent)
 
             }
             appWidgetManager.updateAppWidget(widgetId, views)

@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+
 import 'package:home_widget/home_widget.dart';
 import 'package:homescreen_widget/core/companents/button/bloc2/bloc/tabbar_bloc.dart';
 import 'package:homescreen_widget/core/extantion/context_extantion.dart';
@@ -32,6 +34,7 @@ class MyHomePageState extends State<WordOfDayPage> {
 
   final logo = "assets/k_logo.png";
   final _navigator = NavigationService.shared;
+  final FlutterTts tts = FlutterTts();
 
   void loadData() async {
     final getWord = WordRepository().getDailyWordKeys();
@@ -53,6 +56,11 @@ class MyHomePageState extends State<WordOfDayPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  ElevatedButton(
+                      child: Text("deneme"),
+                      onPressed: () {
+                        tts.speak("hello word");
+                      }),
                   BlocBuilder<WordBloc, WordState>(
                     builder: (context, wordstate) {
                       if (wordstate.status.isSuccess) {
