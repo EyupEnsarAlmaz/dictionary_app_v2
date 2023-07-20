@@ -1,0 +1,17 @@
+final List<String> dataList = [
+  'absolutely',
+  'acceptable',
+  'accidentally',
+  'accommodation',
+  'join',
+  'vegetarian',
+  'version',
+  'victory',
+  'uncomfortably',
+  'backgrounds',
+  'badboy',
+  'balances',
+  'cameramen',
+  'cancelled',
+  'decreased',
+];

@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:home_widget/home_widget.dart';
 import 'package:homescreen_widget/core/companents/button/bloc2/bloc/tabbar_bloc.dart';
 import 'package:homescreen_widget/core/extantion/context_extantion.dart';
 import 'package:homescreen_widget/core/navigation/constant/routest_constant.dart';
 import 'package:homescreen_widget/core/navigation/contract/base_navigation_service.dart';
 import 'package:homescreen_widget/core/navigation/navigation_service.dart';
+import 'package:homescreen_widget/data/models/words/local_model_list.dart';
 import 'package:homescreen_widget/data/repositories/local_word_repositories.dart';
 import 'package:homescreen_widget/features/search/presentation/pages/bloc/bloc/word_bloc.dart';
 import 'package:homescreen_widget/features/search/presentation/pages/widget/background_widget.dart';
@@ -39,18 +41,34 @@ class MyHomePageState extends State<SearchPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  TextField(
-                    controller: _texteditincontroller,
-                    decoration: InputDecoration(
-                      hintText: 'Search word',
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          context.read<WordBloc>().add(
-                              WordEvent.searched(_texteditincontroller.text));
-                        },
-                        icon: const Icon(Icons.search),
+                  TypeAheadField(
+                    textFieldConfiguration: TextFieldConfiguration(
+                      decoration: InputDecoration(
+                        hintText: 'Search word',
                       ),
                     ),
+                    suggestionsCallback: (pattern) {
+                      if (pattern.isEmpty) {
+                        return [];
+                      } else {
+                        return dataList
+                            .where((item) => item
+                                .toLowerCase()
+                                .startsWith(pattern.toLowerCase()))
+                            .toList();
+                      }
+                    },
+                    itemBuilder: (context, suggestion) {
+                      return ListTile(
+                        title: Text(suggestion),
+                      );
+                    },
+                    onSuggestionSelected: (suggestion) {
+                      context
+                          .read<WordBloc>()
+                          .add(WordEvent.searched(suggestion));
+                    },
+                    debounceDuration: Duration(milliseconds: 500),
                   ),
                   BlocBuilder<WordBloc, WordState>(
                     builder: (context, wordstate) {
@@ -143,29 +161,29 @@ class MyHomePageState extends State<SearchPage> {
                         ? "Verb:" " (${wordstate.verbList?.length})"
                         : "Verb"),
                 Tab(
-                    text: wordstate.verbList != null
+                    text: wordstate.adjectiveList != null
                         ? "Adjective:" " (${wordstate.adjectiveList?.length})"
                         : "Adjective"),
                 Tab(
-                    text: wordstate.verbList != null
+                    text: wordstate.pronounList != null
                         ? "Pronoun:" " (${wordstate.pronounList?.length})"
                         : "Pronoun"),
                 Tab(
-                    text: wordstate.verbList != null
+                    text: wordstate.articlesList != null
                         ? "Articles:" " (${wordstate.articlesList?.length})"
                         : "Articles"),
                 Tab(
-                    text: wordstate.verbList != null
+                    text: wordstate.interjectionList != null
                         ? "Interjection:"
                             " (${wordstate.interjectionList?.length})"
                         : "Interjection"),
                 Tab(
-                    text: wordstate.verbList != null
+                    text: wordstate.adverbList != null
                         ? "Adverb:"
                             " (${wordstate.adverbList?.length})"
                         : "Adverb"),
                 Tab(
-                    text: wordstate.verbList != null
+                    text: wordstate.prepositionList != null
                         ? "Preposition:"
                             " (${wordstate.prepositionList?.length})"
                         : "Preposition"),
